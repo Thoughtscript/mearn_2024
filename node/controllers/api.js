@@ -27,7 +27,7 @@ publicApi
     return res.send({ status: 200, data: JSON.stringify(responseData) })
   })
 
-  // https://localhost:8888/api/events
+  // https://localhost:8888/api/event
   .post("/event", async (req, res) => {
     const body = req.body
     const responseData = await E.CREATE_ONE(body.name, body.msg )
