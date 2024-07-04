@@ -1,0 +1,25 @@
+main.landingPage {
+
+}
+
+main.landingPage > .content {
+    min-height: 800px;
+    text-align: center;
+    background: #FDFDFD;
+    place-content: center;
+    width: 100%;
+    display: flex;
+    border-bottom: 2px dashed black;
+}
+
+main.landingPage > .content > .text {
+    text-align: center;
+    align-content: center;
+    justify-content: center;
+    position: relative;
+    color: black;
+    text-transform: lowercase;
+    letter-spacing: 3px;
+    font-size: 25px;
+    font-weight: 900;
+}

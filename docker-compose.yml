@@ -1,0 +1,62 @@
+services:
+  mongo:
+    image: bitnami/mongodb:7.0.9
+    ports:
+      - "27017:27017"
+    volumes:
+      - 'mongodb_data:/bitnami/mongodb'
+    environment:
+      - MONGODB_ROOT_USER=rootuser
+      - MONGODB_ROOT_PASSWORD=rootpass
+      - MONGODB_USERNAME=testuser
+      - MONGODB_PASSWORD=testpass
+      - MONGODB_DATABASE=testdatabase
+      # This is required on Apple Silicon https://github.com/docker/for-mac/issues/6620
+      # https://github.com/bitnami/containers/issues/40947#issuecomment-1927013148
+      - EXPERIMENTAL_DOCKER_DESKTOP_FORCE_QEMU=1
+    networks:
+      - testnet
+
+  node:
+    build:
+      context: ./node
+      dockerfile: dockerfile
+    ports:
+      - '8888:8888'
+    depends_on:
+      - mongo
+    networks:
+      - testnet
+    restart: unless-stopped
+
+  react:
+    build:
+      context: ./react
+      dockerfile: dockerfile
+    ports:
+      - '443:443'
+      - '1234:1234'
+    depends_on:
+      - node
+    networks:
+      - testnet
+    restart: unless-stopped
+
+  angular:
+    build:
+      context: ./angular
+      dockerfile: dockerfile
+    ports:
+      - '4200:4200'
+    depends_on:
+      - node
+    networks:
+      - testnet
+
+volumes:
+  mongodb_data:
+    driver: local
+
+networks:
+  testnet:
+    driver: bridge

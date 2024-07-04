@@ -1,0 +1,24 @@
+main.landingPage > .content > table {
+    top: 200px;
+    position: relative;
+    color: black;
+    text-transform: lowercase;
+    letter-spacing: 3px;
+    font-size: 25px;
+    font-weight: 900;
+    width: 75%;
+    padding-bottom: 400px;
+    text-align: left;
+}
+
+table > tbody > tr > th, table > thead > tr > th {
+    width: 50%;
+}
+
+table > tbody > tr > th {
+    font-size: 15px;
+}
+
+tr {
+    padding-bottom: 5px;
+}
