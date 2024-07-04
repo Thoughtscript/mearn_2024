@@ -12,7 +12,7 @@ docker-compose up
 2. GET https://localhost:8888/api/events
 3. GET https://localhost:8888/api/cmd - experimenting with delegated Server Workers
 4. http://localhost:4200
-5. 
+5. http://localhost:1234
 
 ## Resources and Links
 
