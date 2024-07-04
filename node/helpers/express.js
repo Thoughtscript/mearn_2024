@@ -26,7 +26,7 @@ module.exports = {
         optionsSuccessStatus: 200
       }))
       
-      .use('/api', require('./api'))
+      .use('/api', require('../controllers/api'))
 
     return app
   }

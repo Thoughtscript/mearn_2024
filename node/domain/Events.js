@@ -45,5 +45,26 @@ module.exports = {
         // Pass the _id into a ObjectId
         const event = await db_collection.findOne({_id: new MDB.ObjectId(id)})
         return event
+    },
+
+    DELETE_EVENT: async (id) => {
+        let db_collection = await M.COL('Events')
+        // Pass the _id into a ObjectId
+        const event = await db_collection.deleteOne({_id: new MDB.ObjectId(id)})
+        return event
+    },
+
+    CREATE_EVENT: async (name, msg) => {
+        const obj = { "_id": new MDB.ObjectId(), name: name, msg: msg}
+        let db_collection = await M.COL('Events')
+        const event = await db_collection.insertOne(obj)
+        return event
+    },
+
+    UPDATE_EVENT: async (id, name, msg) => {
+        let db_collection = await M.COL('Events')
+        const filter = { "_id": new MDB.ObjectId(id) }, update = { "$set": { name: name, msg: msg } }
+        const event = await db_collection.updateOne(filter, update)
+        return event
     }
 }

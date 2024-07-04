@@ -17,7 +17,8 @@ const INSERT_EVENTS = () => new Promise((resolve, reject) => {
             [
                 E.JSON_OBJ_FACTORY(new MDB.ObjectId(), "testA", "msgA"),
                 E.JSON_OBJ_FACTORY(new MDB.ObjectId(), "testB", "msgB"),
-                E.JSON_OBJ_FACTORY(new MDB.ObjectId(), "testC", "msgC")
+                E.JSON_OBJ_FACTORY(new MDB.ObjectId(), "testC", "msgC"),
+                E.JSON_OBJ_FACTORY(new MDB.ObjectId("6685f8f76dd0250b4e863266"), "testD", "msgD")
 
             ]).then(success1 => {
                 console.log("Collection initialized with data ...")
