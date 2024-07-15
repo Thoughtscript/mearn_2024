@@ -7,7 +7,7 @@
  */
 
 const express = require('express'),
-  C = require('../config')
+  C = require('../config').SERVER
 
 module.exports = {
   createServer: () => {
@@ -22,7 +22,7 @@ module.exports = {
 
       // Set CORS
       .use(require('cors')({
-        origin: C.SERVER.CORS,
+        origin: C.CORS,
         optionsSuccessStatus: 200
       }))
       

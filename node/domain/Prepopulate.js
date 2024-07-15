@@ -31,17 +31,33 @@ const INSERT_EVENTS = () => new Promise((resolve, reject) => {
     })
 })
 
-module.exports = {
-    INITIALIZE_DB: () => new Promise((resolve, reject) => {
-        console.log("Initializing DB...")
+const INITIALIZE_DB = () => new Promise((resolve, reject) => {
+    console.log("Initializing DB...")
 
-        M.Q_COL("Events").then(success1 => {
-            console.log("Collection initialized ...")
+    M.Q_COL("Events").then(success1 => {
+        console.log("Collection initialized ...")
 
-            INSERT_EVENTS().then(success2 => resolve(success2))
-
-        }, reject1 => {
-            INSERT_EVENTS().then(success2 => resolve(success2))
+        INSERT_EVENTS().then(success2 => {
+            require('../helpers/mongo').DB_EXIT().then(exitSignal => {
+                resolve(success2)
+                process.exit()
+            })
         })
+
+    }, reject1 => {
+        INSERT_EVENTS().then(success2 => resolve(success2))
+    })
+})
+
+try {
+
+    // Initialize Main Thread/Process
+    INITIALIZE_DB()
+
+} catch (ex) {
+    console.error(`Exception ${ex}!`)
+  
+    require('../helpers/mongo').DB_EXIT().then(exitSignal => {
+      process.exit()
     })
 }

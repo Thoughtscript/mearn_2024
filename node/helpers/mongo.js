@@ -8,7 +8,7 @@
  */
 
 const { MongoClient, BSON } = require("mongodb")
-const C = require('../config')
+const C = require('../config').DB
  
 // Singleton client and db
 let client, db
@@ -16,8 +16,8 @@ let client, db
 const getClient = async () => {
     try {
         if (client === undefined) {
-            console.log(`Initializing new MongoClient with connection: ${C.DB.MONGO_URI}`)
-            client = new MongoClient(C.DB.MONGO_URI)
+            console.log(`Initializing new MongoClient with connection: ${C.MONGO_URI}`)
+            client = new MongoClient(C.MONGO_URI)
         }
     } catch (ex) {
         console.error(`Exception encountered: ${ex}!`)
@@ -32,7 +32,7 @@ const getDb = async () => {
     try {
         if (db === undefined) {
             let client = await getClient()
-            db = await client.db(C.DB.DEFAULT_DB)
+            db = await client.db(C.DEFAULT_DB)
         }
     } catch (ex) {
         console.error(`Exception encountered: ${ex}!`)

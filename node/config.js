@@ -23,6 +23,10 @@ module.exports = {
         }
     },
 
+    CLUSTER: {
+        WORKERS: 4
+    },
+
     DB: {
         DEFAULT_DB: "testdatabase",
         // Must authenticate against the specified testdatabase with the credentials above
