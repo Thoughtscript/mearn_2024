@@ -1,5 +1,9 @@
 # MEARN_2024
 
+[![](https://img.shields.io/badge/React-18.2.0-orange.svg)](https://react.dev/) [![](https://img.shields.io/badge/Node.js-22.0.0-yellowgreen.svg)](https://nodejs.org/en/) [![](https://img.shields.io/badge/Angular-v15-1976d2.svg)](https://angular.io/) [![](https://img.shields.io/badge/Docker-blue.svg)](https://www.docker.com/) [![](https://img.shields.io/badge/Mongo-db-green.svg)](https://www.mongodb.com/)
+
+Mongo, Express, Node, Angular, and React.
+
 ## Use
 
 ```bash
