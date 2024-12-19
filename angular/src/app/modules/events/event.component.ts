@@ -18,16 +18,20 @@ interface Event {
     <main>
         <div id="flex-wrapper">
         <table>
-            <tr>
-                <th>_ID</th>
-                <th>Name</th>
-                <th>Message</th>
-            </tr>
-            <tr *ngFor="let event of events">
-                <td>{{event._id}}</td>
-                <td>{{event.name}}</td>
-                <td>{{event.msg}}</td>
-            </tr>
+            <thead>
+                <tr>
+                    <th>_ID</th>
+                    <th>Name</th>
+                    <th>Message</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let event of events">
+                    <td>{{event._id}}</td>
+                    <td>{{event.name}}</td>
+                    <td>{{event.msg}}</td>
+                </tr>
+            </tbody>
         </table>
         </div>
     </main>
