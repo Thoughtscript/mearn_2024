@@ -58,9 +58,9 @@ export class EventsPage extends React.Component {
                             { 
                                 (events).map(a =>
                                     <tr key={a["_id"]}>
-                                        <th>{a["_id"]}</th>
-                                        <th>{a["name"]}</th>
-                                        <th>{a["msg"]}</th>
+                                        <td>{a["_id"]}</td>
+                                        <td>{a["name"]}</td>
+                                        <td>{a["msg"]}</td>
                                     </tr>
                                 )
                             }

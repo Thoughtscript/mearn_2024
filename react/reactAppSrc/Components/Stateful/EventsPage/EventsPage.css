@@ -15,7 +15,7 @@ table > tbody > tr > th, table > thead > tr > th {
     width: 50%;
 }
 
-table > tbody > tr > th {
+table > tbody > tr > td {
     font-size: 15px;
 }
 
