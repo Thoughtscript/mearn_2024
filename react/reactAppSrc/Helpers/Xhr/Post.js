@@ -25,26 +25,3 @@ export const asyncDataPost = (url, data, token) => {
         }
     })
 }
-
-export const asyncParamsPost = (url, params, token) => {
-    return new Promise((res, rej) => {
-        const what = 'asyncParamsPost'
-        try {
-            let r = restListener(res, rej, what, 'success', 'fail')
-            r.open('POST', url, true)
-            r.setRequestHeader('Content-type', 'application/json')
-            //r.setRequestHeader('Access-Control-Allow-Headers', '*')
-            //r.setRequestHeader('Allow-Control-Allow-Origin', '*')
-            r.withCredentials = false
-            if (!token) r.setRequestHeader('Authorization', 'bearer ' + token)
-            for (let i = 0; i < Object.keys(params).length; i++) {
-                if (i === 0) url += `?`
-                url += `${Object.keys(params)[i]}=${params[Object.keys(params)[i]]}`
-                if (i < Object.keys(params).length - 1) url += `&`
-            }
-            r.send()
-        } catch (ex) {
-            console.log(errMsg(what, ex))
-        }
-    })
-}
