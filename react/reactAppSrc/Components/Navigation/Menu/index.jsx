@@ -10,38 +10,33 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { EVENTS_PATH, BASE_PATH, HOME_PATH } from '../../../Constants'
 
-let w = window.location.pathname
-
 export class Menu extends React.Component {
     constructor(props) {
-        super(props);
-        this.home = React.createRef();
-        this.events = React.createRef();
+        super(props)
+        this.home = React.createRef()
+        this.events = React.createRef()
+        this.state = {
+            active: BASE_PATH
+        }
     }
 
     render() {
+        const { active } = this.state
+
         return (
             <nav>
                 <ul>
                     <li className="home">
-                        <Link onClick={() => {
-                            w = BASE_PATH;
-                            this.home.current.className = 'active';
-                            this.events.current.className = 'inactive';
-                        }}
+                        <Link onClick={() => { this.setState({ active: HOME_PATH }) }}
                             ref={this.home}
-                            className={(w === BASE_PATH || w === HOME_PATH) ? 'active' : 'inactive'}
-                            to={BASE_PATH}>Home</Link>
+                            className={(active === BASE_PATH || active === HOME_PATH) ? 'active' : 'inactive'}
+                            to={HOME_PATH}>Home</Link>
                     </li>
 
                     <li className="events">
-                        <Link onClick={() => {
-                            w = BASE_PATH;
-                            this.home.current.className = 'inactive';
-                            this.events.current.className = 'active';
-                        }}
+                        <Link onClick={() => { this.setState({ active: EVENTS_PATH }) }}
                             ref={this.events}
-                            className={(w === EVENTS_PATH) ? 'active' : 'inactive'}
+                            className={(active === EVENTS_PATH) ? 'active' : 'inactive'}
                             to={EVENTS_PATH}>Events</Link>
                     </li>
                 </ul>
