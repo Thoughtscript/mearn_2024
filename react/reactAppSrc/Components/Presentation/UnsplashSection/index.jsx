@@ -15,7 +15,7 @@ const STYLE = (photo, ixid, w) => {
     }
 }
 
-export default ({photo, ixid}) =>
-    <div className="unsplash" style={STYLE(photo, ixid)}>
+export default ({photo, ixid, w}) =>
+    <div className="unsplash" style={STYLE(photo, ixid, w)}>
 
     </div>
